@@ -1,0 +1,22 @@
+<h2>User List</h2>
+<ul>
+  <li *ngFor="let user of users">
+    {{ user.name }} | {{ user.age }} 
+    <button (click)="editUser(user.id)">Edit</button>
+    <button (click)="deleteUser(user.id)">Delete</button>
+  </li>
+</ul>
+
+<h2>Registration Form</h2>
+<div class="form-container">
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" [(ngModel)]="newUser.name" name="name" id="name">
+  </div>
+  <div class="form-group">
+    <label for="age">Age:</label>
+    <input type="number" [(ngModel)]="newUser.age" name="age" id="age">
+  </div>
+  <button *ngIf="editingUserId === null" (click)="addUser()">Add User</button>
+  <button *ngIf="editingUserId !== null" (click)="updateUser()">Update User</button>
+</div>
